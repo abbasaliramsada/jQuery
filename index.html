@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery A to Z Tutorial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .example-box {
+            background: #f9f9f9;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .btn {
+            background: #3498db;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+        #demo-div {
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px dashed #ccc;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background: #e74c3c;
+            margin: 10px;
+            display: inline-block;
+        }
+        #ajax-content {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery A to Z Tutorial</h1>
+    <p>A complete guide from basic to advanced jQuery concepts with examples.</p>
+
+    <!-- Table of Contents -->
+    <h2>Table of Contents</h2>
+    <ul id="toc">
+        <li><a href="#intro">1. Introduction</a></li>
+        <li><a href="#syntax">2. Basic Syntax</a></li>
+        <li><a href="#selectors">3. Selectors</a></li>
+        <li><a href="#events">4. Events</a></li>
+        <li><a href="#effects">5. Effects</a></li>
+        <li><a href="#dom">6. DOM Manipulation</a></li>
+        <li><a href="#ajax">7. AJAX</a></li>
+        <li><a href="#advanced">8. Advanced Concepts</a></li>
+    </ul>
+
+    <!-- Introduction Section -->
+    <section id="intro">
+        <h2>1. Introduction to jQuery</h2>
+        <p>jQuery is a fast, small, and feature-rich JavaScript library.</p>
+        
+        <div class="example-box">
+            <h3>How to Include jQuery</h3>
+            <pre><code>&lt;!-- Using CDN --&gt;
+&lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- Or download and include locally --&gt;
+&lt;script src="jquery-3.6.0.min.js"&gt;&lt;/script&gt;</code></pre>
+        </div>
+        
+        <div class="example-box">
+            <h3>Document Ready</h3>
+            <p>Ensures code runs after DOM is fully loaded</p>
+            <pre><code>// Shorthand version (most common)
+$(function() {
+    // Your code here
+});
+
+// Long version
+$(document).ready(function() {
+    // Your code here
+});</code></pre>
+        </div>
+    </section>
+
+    <!-- Basic Syntax Section -->
+    <section id="syntax">
+        <h2>2. Basic jQuery Syntax</h2>
+        <p>The basic syntax is: <code>$(selector).action()</code></p>
+        
+        <div class="example-box">
+            <h3>Simple Example</h3>
+            <button id="hide-btn" class="btn">Hide Paragraph</button>
+            <button id="show-btn" class="btn">Show Paragraph</button>
+            <p id="demo-para">This is a paragraph that can be hidden/shown.</p>
+            
+            <pre><code>// Hide paragraph when button is clicked
+$("#hide-btn").click(function() {
+    $("#demo-para").hide(); // Hides the element
+});
+
+// Show paragraph when button is clicked
+$("#show-btn").click(function() {
+    $("#demo-para").show(); // Shows the element
+});</code></pre>
+        </div>
+    </section>
+
+    <!-- Selectors Section -->
+    <section id="selectors">
+        <h2>3. jQuery Selectors</h2>
+        <p>jQuery uses CSS-style selectors to select HTML elements.</p>
+        
+        <div class="example-box">
+            <h3>Basic Selectors</h3>
+            <button id="selector-btn" class="btn">Test Selectors</button>
+            <div id="demo-div">
+                <p class="test">Paragraph with class "test"</p>
+                <p>Another paragraph without class</p>
+                <ul>
+                    <li>List item 1</li>
+                    <li>List item 2</li>
+                </ul>
+            </div>
+            
+            <pre><code>// Element selector
+$("p").css("color", "blue"); // All paragraphs
+
+// ID selector
+$("#demo-div").css("border", "2px solid red");
+
+// Class selector
+$(".test").css("font-weight", "bold");
+
+// Multiple elements
+$("p, li").css("font-size", "18px");
+
+// Child selector
+$("ul li").css("color", "green");</code></pre>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events">
+        <h2>4. jQuery Events</h2>
+        <p>jQuery provides simple methods for handling events.</p>
+        
+        <div class="example-box">
+            <h3>Common Events</h3>
+            <button id="click-btn" class="btn">Click Me</button>
+            <div id="hover-div" style="padding:20px;background:#eee;margin:10px 0;">
+                Hover over me
+            </div>
+            <input type="text" id="key-input" placeholder="Type here">
+            
+            <pre><code>// Click event
+$("#click-btn").click(function() {
+    alert("Button was clicked!");
+});
+
+// Hover event (mouseenter + mouseleave)
+$("#hover-div").hover(
+    function() {
+        $(this).css("background", "#ddd");
+    },
+    function() {
+        $(this).css("background", "#eee");
+    }
+);
+
+// Keypress event
+$("#key-input").keypress(function() {
+    console.log("You pressed a key");
+});</code></pre>
+        </div>
+    </section>
+
+    <!-- Effects Section -->
+    <section id="effects">
+        <h2>5. jQuery Effects</h2>
+        <p>jQuery provides several effect methods.</p>
+        
+        <div class="example-box">
+            <h3>Basic Effects</h3>
+            <button id="fade-btn" class="btn">Fade Toggle</button>
+            <button id="slide-btn" class="btn">Slide Toggle</button>
+            <button id="animate-btn" class="btn">Animate</button>
+            <div id="effects-div" style="width:200px;height:100px;background:#9b59b6;margin:15px 0;"></div>
+            
+            <pre><code>// Fade effects
+$("#fade-btn").click(function() {
+    $("#effects-div").fadeToggle(1000); // 1000ms = 1s
+});
+
+// Slide effects
+$("#slide-btn").click(function() {
+    $("#effects-div").slideToggle();
+});
+
+// Custom animation
+$("#animate-btn").click(function() {
+    $("#effects-div").animate({
+        width: "toggle",
+        opacity: 0.5,
+        height: "150px"
+    }, 1500);
+});</code></pre>
+        </div>
+    </section>
+
+    <!-- DOM Manipulation Section -->
+    <section id="dom">
+        <h2>6. DOM Manipulation</h2>
+        <p>jQuery makes it easy to manipulate the DOM.</p>
+        
+        <div class="example-box">
+            <h3>Content Manipulation</h3>
+            <button id="html-btn" class="btn">Change HTML</button>
+            <button id="text-btn" class="btn">Change Text</button>
+            <button id="val-btn" class="btn">Get Input Value</button>
+            <button id="append-btn" class="btn">Append</button>
+            <div id="dom-div" style="border:1px solid #ddd;padding:15px;margin:10px 0;">
+                Original content
+            </div>
+            <input type="text" id="name-input" value="John Doe">
+            
+            <pre><code>// Change HTML content
+$("#html-btn").click(function() {
+    $("#dom-div").html("&lt;b&gt;New HTML content&lt;/b&gt;");
+});
+
+// Change text content
+$("#text-btn").click(function() {
+    $("#dom-div").text("New text content");
+});
+
+// Get input value
+$("#val-btn").click(function() {
+    alert($("#name-input").val());
+});
+
+// Append content
+$("#append-btn").click(function() {
+    $("#dom-div").append(" &lt;span style='color:red;'&gt;(appended)&lt;/span&gt;");
+});</code></pre>
+        </div>
+        
+        <div class="example-box">
+            <h3>CSS and Attributes</h3>
+            <button id="css-btn" class="btn">Change CSS</button>
+            <button id="attr-btn" class="btn">Get Attribute</button>
+            <div id="css-div" style="width:100px;height:100px;background:#e67e22;"></div>
+            <a href="https://jquery.com" id="jquery-link">jQuery Website</a>
+            
+            <pre><code>// Change CSS
+$("#css-btn").click(function() {
+    $("#css-div").css({
+        "background": "#2ecc71",
+        "border-radius": "50%"
+    });
+});
+
+// Get attribute
+$("#attr-btn").click(function() {
+    alert($("#jquery-link").attr("href"));
+});</code></pre>
+        </div>
+    </section>
+
+    <!-- AJAX Section -->
+    <section id="ajax">
+        <h2>7. jQuery AJAX</h2>
+        <p>jQuery simplifies AJAX requests.</p>
+        
+        <div class="example-box">
+            <h3>Basic AJAX Methods</h3>
+            <button id="load-btn" class="btn">Load Content</button>
+            <button id="get-btn" class="btn">GET Request</button>
+            <button id="post-btn" class="btn">POST Request</button>
+            <div id="ajax-content">AJAX response will appear here</div>
+            
+            <pre><code>// Load content from a file
+$("#load-btn").click(function() {
+    $("#ajax-content").load("demo_test.html");
+});
+
+// GET request
+$("#get-btn").click(function() {
+    $.get("demo_test.asp", function(data, status) {
+        $("#ajax-content").html("Data: " + data + "\nStatus: " + status);
+    });
+});
+
+// POST request
+$("#post-btn").click(function() {
+    $.post("demo_test_post.asp",
+    {
+        name: "Donald Duck",
+        city: "Duckburg"
+    },
+    function(data, status) {
+        $("#ajax-content").html("Data: " + data + "\nStatus: " + status);
+    });
+});</code></pre>
+        </div>
+    </section>
+
+    <!-- Advanced Section -->
+    <section id="advanced">
+        <h2>8. Advanced jQuery Concepts</h2>
+        
+        <div class="example-box">
+            <h3>Method Chaining</h3>
+            <button id="chain-btn" class="btn">Run Chain</button>
+            <div id="chain-div" style="width:100px;height:100px;background:#34495e;"></div>
+            
+            <pre><code>// Multiple methods in one statement
+$("#chain-btn").click(function() {
+    $("#chain-div")
+        .css("background", "#16a085")
+        .slideUp(1000)
+        .slideDown(1000)
+        .animate({width: "200px"});
+});</code></pre>
+        </div>
+        
+        <div class="example-box">
+            <h3>Event Delegation</h3>
+            <button id="add-li-btn" class="btn">Add List Item</button>
+            <ul id="event-ul">
+                <li>Existing item</li>
+            </ul>
+            
+            <pre><code>// Works for current AND future elements
+$("#event-ul").on("click", "li", function() {
+    $(this).toggleClass("highlight");
+});
+
+$("#add-li-btn").click(function() {
+    $("#event-ul").append("&lt;li&gt;New item (click me)&lt;/li&gt;");
+});</code></pre>
+        </div>
+        
+        <div class="example-box">
+            <h3>Promises and Deferreds</h3>
+            <button id="promise-btn" class="btn">Run Animation Sequence</button>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            
+            <pre><code>// Execute code after animations complete
+$("#promise-btn").click(function() {
+    $(".box")
+        .first()
+        .fadeOut(1000)
+        .fadeIn(1000)
+        .promise()
+        .done(function() {
+            $(".box")
+                .eq(1)
+                .animate({left: "+=100"}, 1000)
+                .promise()
+                .done(function() {
+                    $(".box")
+                        .last()
+                        .animate({height: "toggle"}, 1000);
+                });
+        });
+});</code></pre>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            // Basic Syntax Examples
+            $("#hide-btn").click(function() {
+                $("#demo-para").hide();
+            });
+            $("#show-btn").click(function() {
+                $("#demo-para").show();
+            });
+
+            // Selectors Examples
+            $("#selector-btn").click(function() {
+                $("p").css("color", "blue");
+                $("#demo-div").css("border", "2px solid red");
+                $(".test").css("font-weight", "bold");
+                $("p, li").css("font-size", "18px");
+                $("ul li").css("color", "green");
+            });
+
+            // Events Examples
+            $("#click-btn").click(function() {
+                alert("Button was clicked!");
+            });
+            $("#hover-div").hover(
+                function() {
+                    $(this).css("background", "#ddd");
+                },
+                function() {
+                    $(this).css("background", "#eee");
+                }
+            );
+            $("#key-input").keypress(function() {
+                console.log("You pressed a key");
+            });
+
+            // Effects Examples
+            $("#fade-btn").click(function() {
+                $("#effects-div").fadeToggle(1000);
+            });
+            $("#slide-btn").click(function() {
+                $("#effects-div").slideToggle();
+            });
+            $("#animate-btn").click(function() {
+                $("#effects-div").animate({
+                    width: "toggle",
+                    opacity: 0.5,
+                    height: "150px"
+                }, 1500);
+            });
+
+            // DOM Manipulation Examples
+            $("#html-btn").click(function() {
+                $("#dom-div").html("<b>New HTML content</b>");
+            });
+            $("#text-btn").click(function() {
+                $("#dom-div").text("New text content");
+            });
+            $("#val-btn").click(function() {
+                alert($("#name-input").val());
+            });
+            $("#append-btn").click(function() {
+                $("#dom-div").append(" <span style='color:red;'>(appended)</span>");
+            });
+            $("#css-btn").click(function() {
+                $("#css-div").css({
+                    "background": "#2ecc71",
+                    "border-radius": "50%"
+                });
+            });
+            $("#attr-btn").click(function() {
+                alert($("#jquery-link").attr("href"));
+            });
+
+            // AJAX Examples (commented out as they need server to work)
+            /*
+            $("#load-btn").click(function() {
+                $("#ajax-content").load("demo_test.html");
+            });
+            $("#get-btn").click(function() {
+                $.get("demo_test.asp", function(data, status) {
+                    $("#ajax-content").html("Data: " + data + "\nStatus: " + status);
+                });
+            });
+            $("#post-btn").click(function() {
+                $.post("demo_test_post.asp",
+                {
+                    name: "Donald Duck",
+                    city: "Duckburg"
+                },
+                function(data, status) {
+                    $("#ajax-content").html("Data: " + data + "\nStatus: " + status);
+                });
+            });
+            */
+
+            // Advanced Examples
+            $("#chain-btn").click(function() {
+                $("#chain-div")
+                    .css("background", "#16a085")
+                    .slideUp(1000)
+                    .slideDown(1000)
+                    .animate({width: "200px"});
+            });
+            $("#event-ul").on("click", "li", function() {
+                $(this).toggleClass("highlight");
+            });
+            $("#add-li-btn").click(function() {
+                $("#event-ul").append("<li>New item (click me)</li>");
+            });
+            $("#promise-btn").click(function() {
+                $(".box")
+                    .first()
+                    .fadeOut(1000)
+                    .fadeIn(1000)
+                    .promise()
+                    .done(function() {
+                        $(".box")
+                            .eq(1)
+                            .animate({left: "+=100"}, 1000)
+                            .promise()
+                            .done(function() {
+                                $(".box")
+                                    .last()
+                                    .animate({height: "toggle"}, 1000);
+                            });
+                    });
+            });
+        });
+    </script>
+</body>
+</html>
